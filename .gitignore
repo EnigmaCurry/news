@@ -1,0 +1,10 @@
+*.pyc
+.*
+*~
+/env/
+/node_modules/
+/yarn-error.log
+/news.egg-info/
+__pycache__/
+/news.html
+/test_root/

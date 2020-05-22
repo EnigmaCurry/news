@@ -1,0 +1,10 @@
+# The included newscatcher database has thousands of feeds preconfigured.
+# If you have additional feeds not in the databsae, put them in this file.
+# These will be added to the database during docker image build.
+# If you are not using docker, instead run `news --add-sites news.yaml`
+feeds:
+  - site: newswars.com
+    feed: https://www.newswars.com/feed/custom_feed_rss
+  - site: peakprosperity.com
+    feed: https://feeds.feedburner.com/PeakProsperity
+
