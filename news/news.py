@@ -83,6 +83,9 @@ def main(output, sites, add_sites):
     if add_sites:
         add_sites_to_db(add_sites)
     else:
+        if len(sites) > 1:
+            print("You must provide at least one news source as an argument")
+            exit(1)
         make_news(sites, output)
 
 if __name__ == '__main__':
