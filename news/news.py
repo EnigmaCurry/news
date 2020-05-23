@@ -26,9 +26,9 @@ def gather_news(sites):
             article.summary = clean_html(article.get("summary", ""))
     return news
 
-def make_html(news):
+def make_html(news, title):
     template = templates.get_template('news.html')
-    return template.render(news=news)
+    return template.render(news=news, title=title)
 
 def purge_css(css_path, html_glob):
     if not shutil.which('purgecss'):
@@ -56,9 +56,9 @@ def add_sites_to_db(yaml_path):
                             country=feed.get("country", "US"),
                             main=feed.get("main", True))
 
-def make_news(sites, output=None):
+def make_news(sites, output=None, title='"News"'):
     news = gather_news(sites)
-    html = make_html(news)
+    html = make_html(news, title)
     tmp_out = tempfile.mkstemp()[1]
     with open(tmp_out,'w') as f:
         f.write(html)
@@ -76,17 +76,18 @@ def make_news(sites, output=None):
             f.write(html)
 
 @click.command()
+@click.option("--title", help="Page title", metavar='TITLE', default='"News"')
 @click.option("--add-sites", help="Add sites from YAML file to database", metavar="YAML_FILE")
 @click.option('-o', '--output', help='HTML file to create', default=None, metavar="HTML_FILE")
 @click.argument("sites", nargs=-1)
-def main(output, sites, add_sites):
+def main(output, sites, add_sites, title):
     if add_sites:
         add_sites_to_db(add_sites)
     else:
         if len(sites) > 1:
             print("You must provide at least one news source as an argument")
             exit(1)
-        make_news(sites, output)
+        make_news(sites, output, title)
 
 if __name__ == '__main__':
     main()

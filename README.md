@@ -19,6 +19,12 @@ docker run --rm enigmacurry/news news.ycombinator.com ap.org reuters.com foxnews
 The html is printed to STDOUT, which in this example, is redirected to the file
 called `news.html`.
 
+If you wish to change the title of the page, you can use the `--title WHATEVER` argument:
+
+```
+docker run --rm enigmacurry/news news.ycombinator.com --title "Hacker News" > news.html
+```
+
 ## Adding your own news sources
 
 The included [newscatcher database](https://github.com/kotartemiy/newscatcher/)
