@@ -3,6 +3,8 @@
 This is a minimal self-hosted news aggregator that produces a single static HTML
 page. You can run it on a cron job and host it on any webserver. 
 
+[DEMO](https://news.misc.codes)
+
 News sources are aggregated by their RSS feeds contained in the included
 [newscatcher database](https://github.com/kotartemiy/newscatcher/). Minimal
 responsive layout designed with [Blunt.css](https://github.com/f-prime/Blunt/)
@@ -13,7 +15,7 @@ and pruned with [PurgeCSS](https://purgecss.com/)
 Run the pre-built docker image with any number of news sites as individual arguments:
 
 ```
-docker run --rm enigmacurry/news news.ycombinator.com ap.org reuters.com foxnews.com > news.html
+docker run --rm enigmacurry/news news.ycombinator.com reuters.com foxnews.com > news.html
 ```
 
 The html is printed to STDOUT, which in this example, is redirected to the file
@@ -49,7 +51,7 @@ docker build -t news .
 Now test running your own image and include your own domains:
 
 ```
-docker run --rm news news.ycombinator.com ap.org reuters.com foxnews.com > news.html
+docker run --rm news news.ycombinator.com reuters.com foxnews.com > news.html
 ```
 
 ## Run without docker
@@ -72,7 +74,7 @@ yarn global add purgecss
 Now you can run the `news` executable:
 
 ```
-news news.ycombinator.com ap.org reuters.com foxnews.com > news.html
+news news.ycombinator.com reuters.com foxnews.com > news.html
 ```
 
 You can also add your own sources to the database like so (you will need to save

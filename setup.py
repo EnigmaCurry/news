@@ -25,7 +25,8 @@ setuptools.setup(
         "click",
         "css-html-js-minify",
         "pyyaml",
-        "beautifulsoup4"
+        "beautifulsoup4",
+        "boto3"
     ],
     package_data={'news': ['blunt.css', 'templates/*']},
     include_package_data=True,
